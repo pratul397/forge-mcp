@@ -1,0 +1,40 @@
+{
+  "name": "@pratul397/forge-mcp",
+  "version": "0.1.0",
+  "description": "Turn what you consume into something you do — Forge AI learning challenge MCP server for Claude Code",
+  "type": "module",
+  "bin": {
+    "forge-mcp": "./index.js"
+  },
+  "main": "./index.js",
+  "files": [
+    "index.js",
+    "challenges.json",
+    "PROMPT.md"
+  ],
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.2",
+    "youtube-transcript": "^1.2.1"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "claude",
+    "ai",
+    "learning",
+    "challenges",
+    "productivity",
+    "product-manager"
+  ],
+  "author": "pratul397",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pratul397/forge-mcp.git"
+  }
+}
