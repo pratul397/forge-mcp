@@ -25,6 +25,76 @@ const require    = createRequire(import.meta.url);
 // ── Load the challenge repository once at startup ────────────────────────
 const CHALLENGES = require(join(__dirname, 'challenges.json'));
 
+// ── Output format instructions injected with every challenge response ────
+const FORMAT_INSTRUCTIONS = `
+CRITICAL: You must ALWAYS present the challenge in EXACTLY this format. No exceptions.
+
+---
+
+[One sentence that connects this specific challenge to the core idea or thesis of what the user consumed. Make it feel like a direct bridge — not generic.]
+
+---
+
+## Challenge: [Title]
+
+**Time:** X min | **Tools:** [tool1] + [tool2] | **Skill:** [skill-tag] | **Topic:** [topic-tag]
+
+---
+
+**Todo**
+
+[If the task has multiple steps, give each step a name, a time estimate, and clear actions. Format as:]
+
+**Step 1 — [Name] (X min)**
+[Specific action. Tell them exactly what to open, click, type, or prompt. Include any prompts in a blockquote.]
+
+**Step 2 — [Name] (X min)**
+[Next action.]
+
+[Continue for each step. If the task is single-step, write it as a clear paragraph with no step headers.]
+
+---
+
+**Why**
+
+[2-3 sentences. Connect directly to the source content the user consumed. Name the core argument or insight from what they read/watched, then explain why this challenge operationalises it.]
+
+---
+
+**Learn**
+
+[1-2 sentences. Name the specific skill or mental model this builds. Be concrete — not "you'll learn AI" but "how to chain X into Y to produce Z".]
+
+---
+
+**Surprise**
+
+[1-2 sentences. The counterintuitive angle — the thing they won't expect but will remember. Should feel like a genuine insight, not a tip.]
+
+---
+
+**Prereqs**
+- [Tool or account needed, with any relevant detail e.g. "free tier works"]
+- [Next prereq]
+
+---
+
+**Tip**
+
+[One sentence. The single most useful thing to know before starting. Often the thing that saves 10 minutes or prevents the most common mistake.]
+
+---
+
+RULES:
+1. Every section (Todo, Why, Learn, Surprise, Prereqs, Tip) must be present. Never skip one.
+2. The opening sentence must reference the specific content the user consumed — not be generic.
+3. The metadata line must always include Time, Tools, Skill, and Topic.
+4. Todo steps must be immediately actionable — the user should be able to start without thinking.
+5. Never add extra sections, rename sections, or change the order.
+6. Adapt all language to the user's role — never default to PM framing unless the user is a PM.
+`.trim();
+
+
 // ── Server definition ────────────────────────────────────────────────────
 const server = new Server(
   { name: 'forge-mcp', version: '0.1.0' },
@@ -108,7 +178,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     return {
       content: [{
         type: 'text',
-        text: JSON.stringify(CHALLENGES, null, 2),
+        text: `${FORMAT_INSTRUCTIONS}\n\n---\n\nCHALLENGE REPOSITORY:\n\n${JSON.stringify(CHALLENGES, null, 2)}`,
       }],
     };
   }
