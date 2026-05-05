@@ -2,19 +2,42 @@
 
 > Turn what you consume into something you do.
 
-Forge is a Claude Code MCP server that generates hands-on AI learning challenges based on what you just read, watched, or listened to. Paste an article, drop a YouTube link, or just describe what you consumed — Forge researches it, finds the best exercise from a curated library of 50 challenges, and adapts it to your role and work context.
+Forge is an MCP server that generates hands-on AI learning challenges based on what you just read, watched, or listened to. Paste an article, drop a YouTube link, or just describe what you consumed — Forge finds the best exercise from a curated library of 50 challenges and adapts it to your role and context.
+
+Works with **Claude Code** (CLI) and **Claude Desktop**.
 
 ---
 
 ## Install
 
-Add Forge to your Claude Code in one command:
+### Claude Code (CLI)
 
 ```bash
 claude mcp add forge -- npx -y @pratul397/forge-mcp
 ```
 
-That's it. No API key needed — Forge uses your existing Claude subscription.
+### Claude Desktop
+
+1. Open your Claude Desktop config file:
+   - **Mac:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+
+2. Add Forge to the `mcpServers` section:
+
+```json
+{
+  "mcpServers": {
+    "forge": {
+      "command": "npx",
+      "args": ["-y", "@pratul397/forge-mcp"]
+    }
+  }
+}
+```
+
+3. Save the file and restart Claude Desktop.
+
+No API key needed — Forge uses your existing Claude subscription.
 
 ---
 
@@ -47,25 +70,42 @@ Give me a 20-minute Forge challenge.
 
 ## What you get
 
-Each challenge includes:
+Every challenge follows this exact structure:
 
-| Field | Description |
-|---|---|
-| **Title** | Short name for the exercise |
-| **Task** | Specific, actionable instruction — start immediately, no thinking required |
-| **You'll need** | Prerequisites (tools, accounts, files) |
-| **Getting started** | The single most useful tip before you begin |
-| **Why it matters** | Why this technique is worth your time |
-| **What you'll learn** | The skill or mental model this builds |
-| **Surprising angle** | The counterintuitive thing that makes it worth trying |
+**Opening line** — one sentence connecting the challenge to the specific content you consumed.
+
+```
+## Challenge: [Title]
+
+**Time:** X min | **Tools:** [tool] | **Skill:** [skill] | **Topic:** [topic]
+
+**Todo**
+Step-by-step instructions. Each step has a name, time estimate, and clear action.
+Prompts you can paste directly into an AI tool are included as blockquotes.
+
+**Why**
+How this challenge connects to the core idea from what you consumed.
+
+**Learn**
+The specific skill or mental model this exercise builds.
+
+**Surprise**
+The counterintuitive insight that makes this worth doing.
+
+**Prereqs**
+- What you need before you start (tools, accounts, files)
+
+**Tip**
+The single most useful thing to know before you begin.
+```
 
 ---
 
 ## Requirements
 
-- [Claude Code](https://claude.ai/code) installed
 - Claude Pro or Max subscription (or API key)
 - Node.js 18+
+- [Claude Code](https://claude.ai/code) or [Claude Desktop](https://claude.ai/download)
 
 ---
 
