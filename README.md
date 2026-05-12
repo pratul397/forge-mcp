@@ -6,6 +6,8 @@ Forge is an MCP server that generates hands-on AI learning challenges based on w
 
 Works with **Claude Code** (CLI) and **Claude Desktop**.
 
+![Forge demo](demo.gif)
+
 ---
 
 ## Install
@@ -103,7 +105,7 @@ The single most useful thing to know before you begin.
 
 ## Requirements
 
-- Claude Pro or Max subscription (or API key)
+- Claude Pro or Max subscription
 - Node.js 18+
 - [Claude Code](https://claude.ai/code) or [Claude Desktop](https://claude.ai/download)
 
@@ -118,6 +120,12 @@ Forge ships with 50 curated challenges covering:
 **Skills:** Prompt engineering, documentation, user research, competitive intelligence, strategy, data analysis, communication, automation
 
 Updated via `npm update @pratul397/forge-mcp`.
+
+---
+
+## Privacy
+
+Forge sends an anonymous ping on startup to count active installs. No personal data is collected.
 
 ---
 

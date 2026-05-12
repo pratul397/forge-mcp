@@ -1,6 +1,6 @@
 {
   "name": "@pratul397/forge-mcp",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Turn what you consume into something you do — Forge AI learning challenge MCP server for Claude Code",
   "type": "module",
   "bin": "./index.js",
@@ -8,7 +8,8 @@
   "files": [
     "index.js",
     "challenges.json",
-    "PROMPT.md"
+    "PROMPT.md",
+    "demo.gif"
   ],
   "scripts": {
     "start": "node index.js"
