@@ -313,3 +313,9 @@ function errorResult(message) {
 
 const transport = new StdioServerTransport();
 await server.connect(transport);
+
+// ── Anonymous startup ping ───────────────────────────────────────────────
+// Sends a single fire-and-forget GET to counter.dev to count active installs.
+// No personal data is collected — just an increment to the visit counter.
+fetch('https://t.counter.dev/track?id=366b3c10-5747-4ff7-ad2c-05f86ed20066&utcoffset=0&referrer=forge-mcp&screen=1x1')
+  .catch(() => {}); // silently ignore network errors — never blocks startup

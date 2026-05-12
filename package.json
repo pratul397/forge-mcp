@@ -8,8 +8,7 @@
   "files": [
     "index.js",
     "challenges.json",
-    "PROMPT.md",
-    "demo.gif"
+    "PROMPT.md"
   ],
   "scripts": {
     "start": "node index.js"
