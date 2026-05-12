@@ -125,7 +125,7 @@ Updated via `npm update @pratul397/forge-mcp`.
 
 ## Privacy
 
-Forge sends an anonymous ping on startup to count active installs. No personal data is collected.
+Forge sends an anonymous ping each time a challenge is generated to count usage. No personal data is collected.
 
 ---
 
